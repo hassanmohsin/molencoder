@@ -6,7 +6,7 @@ DEFAULTS = {
         "outfile": "data/chembl22.h5"
     },
     "zinc12": {
-        "uri": "http://zinc.docking.org/db/bysubset/13/13_prop.xls",
+        "uri": "http://zinc12.docking.org/db/bysubset/13/13_prop.xls",
         "outfile": "data/zinc12.h5"
     }
 }
@@ -98,7 +98,7 @@ def func(args, parser):
         for chunk_ixs in chunk_indices:
             chunk = dataset[chunk_ixs]
             yield (chunk_ixs, chunk)
-        raise StopIteration
+        #raise StopIteration
 
     def create_chunk_dataset(h5file, dataset_name, dataset, dataset_shape,
                              chunk_size=1000):
