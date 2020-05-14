@@ -129,7 +129,7 @@ def train_model(train_loader, encoder, decoder, optimizer, dtype,
 
         loss = encoder.vae_loss(z_var, x_var)
         if (t + 1) % print_every == 0:
-            print('t = %d, loss = %.4f' % (t + 1, loss.data[0]))
+            print('t = %d, loss = %.4f' % (t + 1, loss.data.item()))
 
         optimizer.zero_grad()
         loss.backward()
@@ -149,8 +149,8 @@ def validate_model(val_loader, encoder, decoder, dtype):
 
         avg_val_loss += encoder.vae_loss(z_var, x_var).data
     avg_val_loss /= t
-    print('average validation loss: %.4f' % avg_val_loss[0])
-    return avg_val_loss[0]
+    print('average validation loss: %.4f' % avg_val_loss.item())
+    return avg_val_loss.item()
 
 
 def load_dataset(filename, split=True):
